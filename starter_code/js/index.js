@@ -1,24 +1,24 @@
    /*
-      0 user input city name
-      1 click update "submit"
-      2 determine correct image to display
-      3 body background updates to image    
-        corresponing city specified
-      4 data entry field clears after
+      // user input city name
+      // click update "submit"
+      // determine correct image to display
+      // body background updates to image    
+         corresponing city specified
+      // data entry field clears after
        each entry
        */
 
    $(document).ready(function () {
        $('form').on('submit', function (event) {
-           var cityStr = $('#city-type').val();
-           showImage(cityStr);
+           var city= $('#city-type').val().toLocaleLowerCase();
+           showImage(city);
            event.preventDefault();
        });
    });
 
    function showImage(aStr) {
        //test aStr for values like NY and determine correct image to display.
-
+       //ignore caps since aStr is always lowercase.
        var cityClass = matchInput(aStr);
        $('body').removeClass();
        $('body').addClass(cityClass);
@@ -27,20 +27,20 @@
    }
 
    function matchInput(aStr) {
-
-       if (aStr == "New York" || aStr == "New York City" || aStr == "NYC") {
+       //aStr is lowercase string.
+       if (aStr == "new york" || aStr == "new york city" || aStr == "nyc") {
            return 'nyc';
-       } else if (aStr == "San Francisco" || aStr == "SF" || aStr == "Bay Area") {
+       } else if (aStr == "san francisco" || aStr == "sf" || aStr == "bay area") {
            return 'sf';
-       } else if (aStr == "Los Angeles" || aStr == "LA" || aStr == "LAX") {
+       } else if (aStr == "los angeles" || aStr == "la" || aStr == "lax") {
            return 'la';
-       } else if (aStr == "ATX" || aStr == "Austin") {
+       } else if (aStr == "atx" || aStr == "austin") {
            return 'austin';
-       } else if (aStr == "Sydney" || aStr == "SYD") {
+       } else if (aStr == "sydney" || aStr == "syd") {
            return 'sydney';
        }
 
-       alert('thanks but no thanks');
+       alert('thanks, but no thanks');
        return '';
 
 
